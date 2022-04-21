@@ -15,7 +15,7 @@ public class AndroidRestServerApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(AndroidRestServerApplication.class, args);
-	}
+	} 
 	//Batch
 	@Bean
 	public TaskScheduler taskScheduler() {

@@ -45,7 +45,7 @@ public class AmazonS3Uploader {
 		removeNewFile(uploadFile);
 		return uploadImageUrl;
 	}
-
+ 
 	// S3へのUpload
 	private String putS3(File uploadFile, String fileName) {
 		amazonS3Client.putObject(

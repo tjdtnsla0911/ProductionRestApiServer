@@ -1,13 +1,36 @@
 plugins {
 	id 'org.springframework.boot' version '2.5.12'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	   id "com.ewerk.gradle.plugins.querydsl" version "1.0.10" // (1)
 	id 'java'
 	id 'war'
 }
 
+//Query DST
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
 group = 'com.cos'
 version = '0.0.1-SNAPSHOT'
+apply plugin: 'war'
 sourceCompatibility = '11'
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
 
 configurations {
 	compileOnly {
@@ -29,6 +52,27 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.querydsl:querydsl-jpa' //QueryDSL
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
+    testImplementation 'org.springframework.security:spring-security-test' //テスト成功
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'  //authログイン実装
+    implementation 'org.springframework.boot:spring-boot-starter-security' //保安関連
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1' //jsoup関連
+    implementation group: 'net.nurigo', name: 'javaSDK', version: '2.2' //メッセージ認証
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+ 	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+ 	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+ 	compile 'commons-io:commons-io:2.11.0' // 사진업로드 관련 #아파치            
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    //### 2021년 10월04일 부로 jetty -> tomcat으로 재변경으로 : 사유 - 웹소켓할때 짜증남
+    // {
+		//exclude module: 'spring-boot-starter-tomcat'
+	//}
+    //implementation('org.springframework.boot:spring-boot-starter-jetty') //Tomcat -> Jetty (속도땜에 경량화로 간다)
+    implementation 'org.springframework.boot:spring-boot-starter-websocket' //웹소켓관련
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.14.2' // JSOUP (크롤링용)
+ 	implementation('org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE')//AWS S3
 }
 
 tasks.named('test') {

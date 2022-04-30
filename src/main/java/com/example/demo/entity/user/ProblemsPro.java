@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ import lombok.NonNull;
 @Builder
 @Table(name = "problems_pro")
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.NONE)
 @AllArgsConstructor
 public class ProblemsPro {
 	/*어차피 혼자쓸 앱이라 대충 테이블 1분컷으로 구성*/
@@ -27,7 +28,7 @@ public class ProblemsPro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonIgnore
 	private Integer proId; //문제번호
-	@Column(name = "question")
+	@Column(name = "question",length = 1000)
 	@NonNull
 	private String question; //문제 
 	private String answer; //답

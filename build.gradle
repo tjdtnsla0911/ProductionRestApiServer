@@ -54,9 +54,11 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.querydsl:querydsl-jpa' //QueryDSL
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
+    /*
     testImplementation 'org.springframework.security:spring-security-test' //テスト成功
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'  //authログイン実装
     implementation 'org.springframework.boot:spring-boot-starter-security' //保安関連
+    */
     implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1' //jsoup関連
     implementation group: 'net.nurigo', name: 'javaSDK', version: '2.2' //メッセージ認証
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'

@@ -16,8 +16,12 @@ import com.example.demo.repository.AppUserRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
-@RestController
-@CrossOrigin("*") //テスト中ですので、＊にします
+//BootWar 이란걸 뽑아서 
+
+//스프링부트 (자바를 쓰는 백엔드를 위허ㅏㄴ 시발놈들아 프레임워크) <-> 프론트단(리엑트,뷰 ) , 모바일단(좆드로이나 , ios 시발 사과새끼들)
+
+@RestController //데이터를 반환 @Controller
+@CrossOrigin("*") //교차출처 소스검증 , 시발 여기에 설정한 아이피(리에트나, 좆드로이드나) 들만 올수있다.  テスト中ですので、＊にします
 @RequestMapping(name = "/app/android") //
 @Slf4j 
 public class AndroidUserController {
@@ -28,7 +32,6 @@ public class AndroidUserController {
 	@Autowired
 	AppUserRepository appRepository;
 	
-
 	final String Log = "@@@@@@@"; //걍 대충설정함
 	
 	//실행시 테스트용
@@ -39,5 +42,5 @@ public class AndroidUserController {
 		return new ResponseEntity<String>("Android ♥ SrpingBoot",HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/login")
+
 }

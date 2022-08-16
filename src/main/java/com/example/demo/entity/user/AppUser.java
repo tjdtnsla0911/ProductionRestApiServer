@@ -18,14 +18,16 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-@Data
+import lombok.Setter;
+import lombok.ToString;
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
-@Entity
-@Table
+@Builder //JPA
+@Entity // JPA
+@Table // JPA
 public class AppUser implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

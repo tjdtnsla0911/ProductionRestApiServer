@@ -1,8 +1,11 @@
 package com.example.demo.restcontroller;
 
+import java.util.HashMap;
+
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +19,10 @@ import com.example.demo.repository.AppUserRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
-//BootWar 이란걸 뽑아서 
+// Java DataBase Connection
 
+//BootWar 이란걸 뽑아서 
+//마이바티스 , 쪼금해야해 , JPA
 //스프링부트 (자바를 쓰는 백엔드를 위허ㅏㄴ 시발놈들아 프레임워크) <-> 프론트단(리엑트,뷰 ) , 모바일단(좆드로이나 , ios 시발 사과새끼들)
 
 @RestController //데이터를 반환 @Controller
@@ -33,7 +38,9 @@ public class AndroidUserController {
 	AppUserRepository appRepository;
 	
 	final String Log = "@@@@@@@"; //걍 대충설정함
-	
+
+
+	//원하는 파라미터 말해라 
 	//실행시 테스트용
 	@PostConstruct
 	@GetMapping("/test")
